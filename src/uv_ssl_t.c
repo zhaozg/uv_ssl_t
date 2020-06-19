@@ -1,10 +1,10 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "src/common.h"
-#include "src/bio.h"
-#include "src/errors.h"
-#include "src/link_methods.h"
+#include "common.h"
+#include "bio.h"
+#include "errors.h"
+#include "link_methods.h"
 
 static void uv_ssl_init_close_cb(uv_handle_t* handle);
 static void uv_ssl_idle_close_cb(uv_handle_t* handle);

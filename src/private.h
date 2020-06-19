@@ -7,7 +7,7 @@
 
 #include "openssl/ssl.h"
 
-#include "src/queue.h"
+#include "queue.h"
 
 typedef struct uv_ssl_write_req_s uv_ssl_write_req_t;
 typedef struct uv_ssl_write_cb_wrap_s uv_ssl_write_cb_wrap_t;

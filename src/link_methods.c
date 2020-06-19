@@ -1,8 +1,8 @@
-#include "src/link_methods.h"
-#include "src/common.h"
-#include "src/errors.h"
-#include "src/private.h"
-#include "src/queue.h"
+#include "link_methods.h"
+#include "common.h"
+#include "errors.h"
+#include "private.h"
+#include "queue.h"
 
 static int uv_ssl_link_read_start(uv_link_t* link);
 static int uv_ssl_link_read_stop(uv_link_t* link);
