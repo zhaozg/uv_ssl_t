@@ -436,14 +436,14 @@ int uv_ssl_write(uv_ssl_t* ssl, uv_link_t* source, const uv_buf_t bufs[],
   /* Only buffers before `i` were written, queue rest */
   extra_size = 0;
   for (j = 0; j <= i; j++)
-    extra_size += bufs[i].len;
+    extra_size += bufs[j].len;
 
   req = malloc(sizeof(*req) + extra_size);
   if (req == NULL)
     return UV_ENOMEM;
 
-  for (j = 0, p = uv_ssl_get_write_data(req); j <= i; j++, p += bufs[i].len)
-    memcpy(p, bufs[i].base, bufs[i].len);
+  for (j = 0, p = uv_ssl_get_write_data(req); j <= i; j++, p += bufs[j].len)
+    memcpy(p, bufs[j].base, bufs[j].len);
 
   req->source = source;
   req->size = extra_size;
