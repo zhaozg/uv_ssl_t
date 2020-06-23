@@ -42,7 +42,7 @@ int main() {
     else
       len = TEST_INSERT_OFF - i;
 
-    ptr = ringbuffer_write_ptr(&rb, &len);
+    ptr = ringbuffer_write_ptr(&rb, (size_t*)&len);
     ASSERT(ptr != NULL);
 
     /* Always make progress */
@@ -72,7 +72,7 @@ int main() {
   i = 0;
   while (i < TEST_DATA_SIZE) {
     len = TEST_DATA_SIZE - i;
-    ptr = ringbuffer_read_next(&rb, &len);
+    ptr = ringbuffer_read_next(&rb, (size_t*)&len);
     ASSERT(ptr != NULL);
 
     /* Always make progress */
