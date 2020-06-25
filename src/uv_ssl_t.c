@@ -304,8 +304,6 @@ restart:
   if (err != 0)
     return err;
 
-  /* Consume data that was sent */
-  ringbuffer_read_skip(&s->encrypted.output, avail);
   s->pending_write += avail;
 
   return 0;
@@ -319,6 +317,9 @@ void uv_ssl_write_cb(uv_link_t* link, int status, void* arg) {
 
   s = (uv_ssl_t*) link;
   write_size = (uintptr_t) arg;
+
+  /* Consume data that was sent */
+  ringbuffer_read_skip(&s->encrypted.output, (size_t) write_size);
 
   if (status != 0)
     return uv_ssl_error(s, status);
